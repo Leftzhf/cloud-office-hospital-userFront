@@ -57,6 +57,7 @@
           </div>
         </div>
         <div class="title select-title"> 选择科室</div>
+<!--        左边部分导航栏-->
         <div class="select-dept-wrapper">
           <div class="department-wrapper">
             <div class="hospital-department">
@@ -64,7 +65,7 @@
                 <div class="dept-list el-scrollbar__wrap" style="margin-bottom: -17px; margin-right: -17px;">
                   <div class="el-scrollbar__view">
                     <div class="sub-item" v-for="(item,index) in departmentVoList" :key="item.id"
-                         :class="index == activeIndex ? 'selected' : ''" @click="move(index,item.depcode)">
+                         :class="index == activeIndex ? 'selected' : ''" @click="move(index,item.parementDepartmentCode)">
                       {{ item.depname }}
                     </div>
                   </div>
@@ -78,9 +79,10 @@
               </div>
             </div>
           </div>
+<!--          右边部分导航栏-->
           <div class="sub-dept-container">
             <div v-for="(item,index) in departmentVoList" :key="item.id" :class="index == 0 ? 'selected' : ''"
-                 class="sub-dept-wrapper" :id="item.depcode">
+                 class="sub-dept-wrapper" :id="item.parementDepartmentCode">
               <div class="sub-title">
                 <div class="block selected"></div>
                 {{ item.depname }}
@@ -136,9 +138,9 @@ export default {
       })
     },
 
-    move(index, depcode) {
+    move(index, parementDepartmentCode) {
       this.activeIndex = index
-      document.getElementById(depcode).scrollIntoView();
+      document.getElementById(parementDepartmentCode).scrollIntoView();
     },
 
     schedule(depcode) {

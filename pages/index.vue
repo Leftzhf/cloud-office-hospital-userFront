@@ -3,6 +3,7 @@
   <div
     class="home  page-component">
 
+<!--    顶部走马灯组件-->
     <el-carousel
       indicator-position="outside">
       <el-carousel-item
@@ -10,7 +11,7 @@
         <img src="~assets/images/web-banner1.png" alt="">
       </el-carousel-item>
     </el-carousel>
-    <!--  搜索  -->
+    <!--  搜索框组件  -->
     <div class="search-container">
 
       <div class="search-wrapper">
@@ -31,7 +32,7 @@
         </div>
       </div>
     </div>
-    <!--  bottom  -->
+    <!--  底部选择区组件  -->
     <div class="bottom">
       <div class="left">
         <div class="home-filter-wrapper">
@@ -54,7 +55,7 @@
             </div>
           </div>
         </div>
-
+<!--        选择后卡片展示区组件-->
         <div class="v-scroll-list  hospital-list">
           <div v-for="(item,index) in list" :key="index" class="v-card  clickable  list-item  space " @click="show(item.hoscode)">
             <div class="">
@@ -82,6 +83,7 @@
         </div>
       </div>
 
+<!--      右侧组件-->
       <div class="right">
 
         <div class="common-dept">
@@ -202,8 +204,9 @@ import dictionaryApi from "@/api/dictionary";
 import hospital from "@/api/hospital";
 
 export default {
-  //只执行一次，在服务端渲染，显示医院列表
+  //只执行一次，在服务端渲染数据，并将数据保存到list和pages中
   asyncData({ params, error }) {
+    //
     return hospitalApi.getHospitalByPage(1, 10, null).then(response => {
       console.log(response.data);
       return {
